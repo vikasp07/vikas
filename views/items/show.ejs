@@ -1,0 +1,43 @@
+<% layout("/layouts/boilerplate") %>
+
+    <div class="row mt-3  show-container">
+      <div class="col-sm-8 offset-sm-2 tittle"></div>
+        <h3>
+          <%= item.name %>
+        </h3>
+      </div>
+      <div class="card col-sm-8 offset-sm-2 show-card item-card">
+        <div id="item_image">
+          <img src="<%= item.image %>" class="show-img card-img-top" alt="item_image">
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <b>Description : </b>
+            <%= item.description %>
+          </p>
+          <p class="card-text"></p>
+            <b>Information  </b>
+            <%= item.info %>
+          </p>
+          <p class="card-text"></p>
+            <b>Category </b>
+            <%= item.category %>
+          </p>
+          <p class="card-text">
+            <b>Price : </b>
+             &#8377; <%= item.price.toLocaleString("en-IN") %> / <%= item.info %>
+          </p>
+          <p class="card-text"></p>
+            <b>MRP : </b>
+             &#8377; <%= item.mrp.toLocaleString("en-IN") %> / <%= item.info %>
+          </p>
+        </div>
+      </div>
+      <br>
+      <br />
+      <a href="/vks/<%= item._id %>/edit">Edit this item</a>
+      <br /> <br />
+      <form method="POST" action="/vks/<%=item._id%>?_method=DELETE">
+        <button>Delete this item</button>
+      </form>
+    </div>

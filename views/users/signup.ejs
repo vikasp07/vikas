@@ -1,0 +1,92 @@
+<% layout("/layouts/userplate") %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title text-center text-primary mb-4">Signup</h1>
+
+          <!-- Display error and success messages -->
+          <% if (error.length > 0) { %>
+          <div class="alert alert-danger"><%= error %></div>
+          <% } %> <% if (success.length > 0) { %>
+          <div class="alert alert-success"><%= success %></div>
+          <% } %>
+
+          <form
+            action="/signup"
+            method="post"
+            class="needs-validation"
+            novalidate
+          >
+            <!-- Username Input -->
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="uil uil-user"></i>
+                </span>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  class="form-control"
+                  placeholder="Enter your username"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Email Input -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="uil uil-envelope"></i>
+                </span>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="uil uil-lock"></i>
+                </span>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                  placeholder="Enter your password"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+          </form>
+
+          <!-- Login Link -->
+          <div class="text-center mt-3">
+            <p>
+              Already a member?
+              <a href="/login" class="text-decoration-none">Login Now</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

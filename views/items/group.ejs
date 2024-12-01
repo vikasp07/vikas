@@ -1,0 +1,138 @@
+<% layout("/layouts/boilerplate") %>
+
+<main>
+  <div class="container">
+    <div id="products" class="product-grid"></div>
+    <!-- Dynamic product cards -->
+  </div>
+</main>
+
+<aside class="cart-sidebar" id="cart-sidebar">
+  <h2>Your Cart</h2>
+  <button class="close-btn" id="close-cart">&times;</button>
+  <div id="cart-items-container"></div>
+  <!-- Cart items loaded dynamically -->
+  <button class="checkout-btn" id="checkout-btn">Checkout</button>
+  <button class="cart-btn" id="cart-btn">View Cart</button>
+</aside>
+
+<script>
+  const allItems = <%- JSON.stringify(allItems) %>;
+  const category = <%- JSON.stringify(category) %>;
+  const cart = [];
+
+  // DOM Elements
+  const productsContainer = document.getElementById("products");
+  const cartItemsContainer = document.getElementById("cart-items-container");
+  const cartSidebar = document.getElementById("cart-sidebar");
+  const closeCartButton = document.getElementById("close-cart");
+  const cartCount = document.getElementById("cart-count");
+
+  // Filter products by category
+  const groceryItems = allItems.filter(item => item.category === category);
+
+  // Generate product cards dynamically
+  const generateProductCards = (products) => {
+    productsContainer.innerHTML = products.map(product => `
+      <div class="product">
+        <img src="/Images/item/${product.name}.webp" alt="${product.name}" />
+        <h2>${product.name} ${product.info}</h2>
+        <p>VKS: ₹${product.price}</p>
+        <p>MRP: ₹${product.mrp}</p>
+        <div class="quantity-controls">
+          <button class="quantity-btn" data-product-id="${product._id}" data-action="subtract">-</button>
+          <span class="quantity" data-product-id="${product._id}">0</span>
+          <button class="quantity-btn" data-product-id="${product._id}" data-action="add">+</button>
+        </div>
+        <button class="addToCartBtn" data-product-id="${product._id}">Add to Cart</button>
+      </div>
+    `).join("");
+    addEventListenersToButtons(); // Attach event listeners after rendering
+  };
+
+  // Update product quantity
+  const updateQuantity = (productId, action) => {
+    const quantityElement = document.querySelector(`.quantity[data-product-id="${productId}"]`);
+    const currentQuantity = Math.max(0, parseInt(quantityElement.textContent, 10) + (action === "add" ? 1 : -1));
+    quantityElement.textContent = currentQuantity;
+  };
+
+  // Add event listeners for buttons
+  const addEventListenersToButtons = () => {
+    document.querySelectorAll(".quantity-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const productId = button.dataset.productId;
+        const action = button.dataset.action;
+        updateQuantity(productId, action);
+      });
+    });
+
+    document.querySelectorAll(".addToCartBtn").forEach(button => {
+      button.addEventListener("click", () => {
+        const productId = button.dataset.productId;
+        const quantity = parseInt(document.querySelector(`.quantity[data-product-id="${productId}"]`).textContent, 10);
+        addToCart(productId, quantity);
+      });
+    });
+  };
+
+  // Add items to cart
+  const addToCart = (productId, quantity) => {
+    if (quantity > 0) {
+      const product = groceryItems.find(p => p._id === productId);
+      if (product) {
+        const cartItem = cart.find(item => item._id === productId);
+        if (cartItem) {
+          cartItem.quantity += quantity;
+        } else {
+          cart.push({ ...product, quantity });
+        }
+        updateCart();
+      }
+    } else {
+      alert("Please select a quantity greater than 0.");
+    }
+  };
+
+  // Remove item from cart
+  const removeItem = (productId) => {
+    const index = cart.findIndex(item => item._id === productId);
+    if (index > -1) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+  };
+
+  // Update cart UI
+  const updateCart = () => {
+    cartItemsContainer.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-inner">
+          <img src="/images/${item.name}.webp" alt="${item.name}" class="cart-item-image">
+          <div class="item-info">
+            <h3>${item.name}</h3>
+            <p>Qty: ${item.quantity}</p>
+            <p>Price: ₹${(item.price * item.quantity).toFixed(2)}</p>
+          </div>
+          <button class="remove-btn" data-id="${item._id}">&times;</button>
+        </div>
+      </div>
+    `).join("");
+
+    cartCount.textContent = cart.length;
+    document.querySelectorAll(".remove-btn").forEach(button => {
+      button.addEventListener("click", () => removeItem(button.dataset.id));
+    });
+  };
+
+  // Initial rendering
+  window.addEventListener("DOMContentLoaded", () => generateProductCards(groceryItems));
+
+  // Close cart
+  closeCartButton.addEventListener("click", () => cartSidebar.classList.remove("open"));
+
+  // Navigate to cart page
+  document.getElementById("cart-btn").addEventListener("click", () => {
+    window.location.href = "/vks/cart";
+  });
+</script>

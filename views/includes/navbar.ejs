@@ -1,0 +1,238 @@
+<header>
+  <div class="navbar">
+    <button class="openbtn" onclick="openNav()">☰ ALL</button>
+
+    <nav id="mySidebar" class="sidebar">
+      <a href="/vksjavascript:void(0)" class="closebtn" onclick="closeNav()">
+        <i class="fa-solid fa-xmark"></i>
+      </a>
+      <h2 class="sidebar-title">All Categories</h2>
+
+      <div class="category">
+        <button class="catoptnbtn">
+          Grocery <span class="catoptnsign">+</span>
+        </button>
+        <ul class="sidebar-category">
+          <li><a href="/vks/vks_grocery">Dal</a></li>
+          <li><a href="/vks/vks_grocery">Pulses</a></li>
+          <li><a href="/vks/vks_grocery">Rice</a></li>
+          <li><a href="/vks/vks_grocery">Dry Fruits</a></li>
+          <li><a href="/vks/vks_grocery">Oil</a></li>
+          <li><a href="/vks/vks_grocery">Masala</a></li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <button class="catoptnbtn">
+          Beverages <span class="catoptnsign">+</span>
+        </button>
+        <ul class="sidebar-category">
+          <li><a href="/vks/beverages">Tea</a></li>
+          <li><a href="/vks/beverages">Coffee</a></li>
+          <li><a href="/vks/beverages">Soft Drinks</a></li>
+          <li><a href="/vks/beverages">Energy Drinks</a></li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <button class="catoptnbtn">
+          Packaged Food <span class="catoptnsign">+</span>
+        </button>
+        <ul class="sidebar-category">
+          <li><a href="/vks/packaged_food">Biscuits</a></li>
+          <li><a href="/vks/packaged_food">Cookies</a></li>
+          <li><a href="/vks/packaged_food">Snacks</a></li>
+          <li><a href="/vks/packaged_food">Farsans</a></li>
+          <li><a href="/vks/packaged_food">Chips</a></li>
+        </ul>
+      </div>
+
+      <div class="category">
+        <button class="catoptnbtn">
+          Home & Kitchen <span class="catoptnsign">+</span>
+        </button>
+        <ul class="sidebar-category">
+          <li><a href="/vks/homeandkitchen">Detergents</a></li>
+          <li><a href="/vks/homeandkitchen">Dishwash</a></li>
+          <li><a href="/vks/homeandkitchen">All Purpose Cleaner</a></li>
+          <li><a href="/vks/homeandkitchen">Fresheners & Repellents</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="navlogo border">
+      <div class="logo"></div>
+    </div>
+
+    <div class="nav-address border">
+      <p class="add-first">Deliver to</p>
+      <div class="add-icon">
+        <i class="fa-solid fa-location-dot"></i>
+        <p class="add-sec">India</p>
+      </div>
+    </div>
+
+    <div class="nav-search">
+      <select id="search-select">
+        <option value="/vks/index">ALL</option>
+        <option value="/vks/grocery">GROCERY</option>
+        <option value="/vks/vks_grocery">VKS GROCERY</option>
+        <option value="/vks/beverages">BEVERAGES</option>
+        <option value="/vks/packaged_food">PACKAGED FOOD</option>
+        <option value="/vks/homeandkitchen">HOME & KITCHEN</option>
+        <option value="/vks/personal_care">PERSONAL CARE</option>
+        <option value="/vks/beautyandcosmetics">BEAUTY & COSMETICS</option>
+        <option value="/vks/school_supplies">SCHOOL SUPPLIES</option>
+      </select>
+      <input placeholder="APKO KYA CHAHIYE" class="search-input" />
+      <div class="search-icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+    <div class="nav-signin">
+      <a href="/login">Sign in</a>
+      <p class="nav-second">Account & LISTS</p>
+    </div>
+    <div class="nav-return">
+      <p><span>Returns</span></p>
+      <p class="nav-second">& Orders</p>
+    </div>
+    <div class="nav-cart border cart-icon" id="cart-icon">
+      <i class="fa-solid fa-cart-shopping"></i>
+      Cart <span class="cart-count" id="cart-count">0</span>
+    </div>
+    <!-- <div class="cart-icon" id="cart-icon">
+      🛒 <span class="cart-count" id="cart-count">0</span>
+    </div> -->
+  </div>
+
+  <!-- <button class="dropbtn">Dropdown</button>
+<div class="dropdown-content">
+<a href="/vks#">Link 1</a>
+<a href="/vks#">Link 2</a>
+<a href="/vks#">Link 3</a>
+</div>
+</div> -->
+
+  <div class="panel">
+    <div class="panel-ops">
+      <a href="/vks/grocery" class="panel-optn"
+        >GROCERY
+        <div class="panel-options">
+          <option value="/vks/grocery">Dal</option>
+          <option value="/vks/grocery">Pulses</option>
+          <option value="/vks/grocery">Rice</option>
+          <option value="/vks/grocery">Dry Fruits</option>
+          <option value="/vks/grocery">Oil</option>
+          <option value="/vks/grocery">Masala</option>
+        </div>
+      </a>
+      <a href="/vks/vks_grocery" class="panel-optn"
+        >VKS GROCERY
+        <div class="panel-options">
+          <option value="/vks/vks_grocery">Dal</option>
+          <option value="/vks/vks_grocery">Pulses</option>
+          <option value="/vks/vks_grocery">Rice</option>
+          <option value="/vks/vks_grocery">Dry Fruits</option>
+          <option value="/vks/vks_grocery">Oil</option>
+          <option value="/vks/vks_grocery">Masala</option>
+        </div>
+      </a>
+      <a href="/vks/beverages" class="panel-optn"
+        >BEVERAGES
+        <div class="panel-options">
+          <option value="/vks/beverages">Tea</option>
+          <option value="/vks/beverages">Coffee</option>
+          <option value="/vks/beverages">Soft Drinks</option>
+          <option value="/vks/beverages">Energy Drinks</option>
+        </div>
+      </a>
+      <a href="/vks/packaged_food" class="panel-optn"
+        >PACKAGED FOOD
+        <div class="panel-options">
+          <option value="/vks/packaged_food">Biscuits</option>
+          <option value="/vks/packaged_food">Cookies</option>
+          <option value="/vks/packaged_food">Snacks</option>
+          <option value="/vks/packaged_food">Farsans</option>
+          <option value="/vks/packaged_food">Chips</option>
+        </div>
+      </a>
+      <a href="/vks/homeandkitchen" class="panel-optn"
+        >HOME & KITCHEN
+        <div class="panel-options">
+          <option value="/vks/homeandkitchen">Detergents</option>
+          <option value="/vks/homeandkitchen">Dishwash</option>
+          <option value="/vks/homeandkitchen">All Purpose Cleaner</option>
+          <option value="/vks/homeandkitchen">Freshners & Repellents</option>
+        </div>
+      </a>
+      <a href="/vks/personal_care" class="panel-optn"
+        >PERSONAL CARE
+        <div class="panel-options">
+          <option value="/vks/personal_care">Hair Care</option>
+          <option value="/vks/personal_care">Oral CARE</option>
+          <option value="/vks/personal_care">Bath & Hand Wash</option>
+          <option value="/vks/personal_care">Feminine Hygine</option>
+          <option value="/vks/personal_care">Deo And Frangrances</option>
+          <option value="/vks/personal_care">Men's Grooming</option>
+        </div>
+      </a>
+      <a href="/vks/beautyandcosmetics" class="panel-optn"
+        >BEAUTY & COSMETICS
+        <div class="panel-options">
+          <option value="/vks/beautyandcosmetics">Skin</option>
+          <option value="/vks/beautyandcosmetics">Face</option>
+          <option value="/vks/beautyandcosmetics">Eye</option>
+          <option value="/vks/beautyandcosmetics">Beauty Accessories</option>
+        </div>
+      </a>
+      <a href="/vks/school_supplies" class="panel-optn">
+        SCHOOL SUPPLIES
+        <div class="panel-options">
+          <option value="/vks/school_supplies">Notebooks</option>
+          <option value="/vks/school_supplies">Diary</option>
+          <option value="/vks/school_supplies">Glue</option>
+          <option value="/vks/school_supplies">Adhesives</option>
+        </div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+  }
+
+  // Toggle category on click
+  document.querySelectorAll(".catoptnbtn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const category = button.nextElementSibling;
+      category.classList.toggle("show");
+      const sign = button.querySelector(".catoptnsign");
+      sign.textContent = sign.textContent === "+" ? "-" : "+";
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("add-to-cart-btn")) {
+      const productId = parseInt(e.target.getAttribute("data-id"));
+      addToCart(productId);
+    } else if (e.target.classList.contains("remove-btn")) {
+      const productId = parseInt(e.target.getAttribute("data-id"));
+      removeFromCart(productId);
+    } else if (e.target.id === "cart-icon") {
+      cartSidebar.classList.toggle("open");
+    } else if (e.target.id === "close-cart") {
+      cartSidebar.classList.remove("open");
+    } else if (e.target.id === "checkout-btn") {
+      alert("Proceed to checkout");
+    }
+  });
+</script>

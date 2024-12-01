@@ -1,0 +1,110 @@
+<% layout("/layouts/boilerplate") %>
+
+    <div class="row mt-3">
+      <div class="col-sm-8 offset-sm-2 px-3">
+        <br />
+        <h3 class="mb-3">Create a new item</h3>
+        <form
+          method="post"
+          action="/vks"
+          novalidate
+          class="needs-validation"
+          enctype="multipart/form-data"
+        >
+          <div class="mb-3">
+            <label for="title" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              name="item[name]"
+              placeholder="enter name"
+              required
+            />
+            <div class="valid-feedback">Title looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              type="text"
+              class="form-control"
+              name="item[description]"
+              placeholder="enter description"
+              required
+            ></textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload item Iamge</label>
+            <input
+              type="file"
+              class="form-control"
+              name="item[image]"
+              required
+            />
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Information</label>
+            <input
+              type="text"
+              class="form-control"
+              name="item[info]"
+              placeholder="enter country"
+              required
+            />
+            <div class="invalid-feedback">Country name should be valid</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="validationCustom04" class="form-label">Category</label>
+            <select
+              class="form-select"
+              id="validationCustom04"
+              name="item[category]"
+              required
+            >
+              <option selected disabled value="">Select a category</option>
+              <option value="Grocery">Grocery</option>
+              <option value="Vks_Grocery">Vks_Grocery</option>
+              <option value="Packaged_Food">Packaged_Food</option>
+              <option value="Beverages">Beverages</option>
+              <option value="Home_Kitchen">Home_Kitchen</option>
+              <option value="Personal_Care">Personal_Care</option>
+              <option value="Beauty_Cosmetics">Beauty_Cosmetics</option>
+              <option value="School_Supplies">School_Supplies</option>
+            </select>
+            <div class="invalid-feedback">Please select a valid category.</div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="price" class="form-label">Price</label>
+              <input
+                type="text"
+                class="form-control"
+                name="item[price]"
+                placeholder="enter price"
+                required
+              />
+              <div class="invalid-feedback">Please enter a valid price</div>
+            </div>
+
+            <div class="mb-3 col-md-4"></div>
+              <label for="price" class="form-label">MRP</label>
+              <input
+                type="text"
+                class="form-control"
+                name="item[mrp]"
+                placeholder="enter price"
+                required
+              />
+              <div class="invalid-feedback">Please enter a valid price</div>
+            </div>
+          </div>
+          <button class="btn edit-btn mt-3">Add</button>
+          <br /><br />
+        </form>
+      </div>
+    </div>

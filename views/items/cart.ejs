@@ -1,0 +1,62 @@
+<% layout("/layouts/boilerplate") %>
+
+<main>
+  <h1>Your Cart</h1>
+  <% if (!cart || cart.length === 0) { %>
+  <p>Your cart is empty.</p>
+  <% } else { %>
+  <ul id="cart-items-container">
+    <% cart.forEach(item => { %>
+    <li>
+      <strong><%= item.title %></strong><br />
+      Price: ₹<%= item.price %><br />
+      Quantity: <%= item.quantity %><br />
+    </li>
+    <% }) %>
+  </ul>
+  <% } %>
+  <div class="cart-summary">
+    <p>Subtotal: ₹<span id="cart-subtotal">0</span></p>
+    <p>Tax (5%): ₹<span id="cart-tax">0</span></p>
+    <p>Shipping: ₹<span id="cart-shipping">0</span></p>
+    <p>Total: ₹<span id="cart-total">0</span></p>
+  </div>
+  <a href="/vks">Continue Shopping</a>
+</main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cartItems = <%- JSON.stringify(cart) %>; // Pass cart data to the script
+    const cartItemsContainer = document.getElementById("cart-items-container");
+    const subtotalElement = document.getElementById("cart-subtotal");
+    const taxElement = document.getElementById("cart-tax");
+    const shippingElement = document.getElementById("cart-shipping");
+    const totalElement = document.getElementById("cart-total");
+
+    if (cartItems.length === 0) return;
+
+    let subtotal = 0;
+
+    cartItems.forEach((item) => {
+      subtotal += item.price * item.quantity;
+
+      const cartItem = document.createElement("div");
+      cartItem.innerHTML = `
+        <div>
+          <strong>${item.title}</strong><br />
+          Qty: ${item.quantity}<br />
+          Price: ₹${(item.price * item.quantity).toFixed(2)}
+        </div>`;
+      cartItemsContainer.appendChild(cartItem);
+    });
+
+    const tax = (subtotal * 0.05).toFixed(2);
+    const shipping = subtotal > 0 ? 15 : 0;
+    const total = (subtotal + parseFloat(tax) + shipping).toFixed(2);
+
+    subtotalElement.textContent = subtotal.toFixed(2);
+    taxElement.textContent = tax;
+    shippingElement.textContent = shipping.toFixed(2);
+    totalElement.textContent = total;
+  });
+</script>

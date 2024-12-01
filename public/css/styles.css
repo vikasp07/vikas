@@ -1,0 +1,127 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+/* Body Styling */
+body {
+  background: linear-gradient(135deg, #6dd5ed, #2193b0);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container Styles */
+.container {
+  width: 100%;
+  max-width: 650px; /* Increased max-width for a wider form */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  padding: 20px 30px; /* Reduced padding to make the height smaller */
+}
+
+/* Title Styling */
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #00719c;
+  margin-bottom: 20px; /* Reduced margin for a more compact look */
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Input Fields */
+input.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  background: #f9f9f9;
+  transition: all 0.3s ease-in-out;
+}
+
+input.form-control:focus {
+  border-color: #00719c;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 113, 156, 0.15);
+  outline: none;
+}
+
+/* Checkbox Styling */
+.form-check-input {
+  margin-right: 8px;
+}
+
+label.form-check-label {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Links */
+a {
+  color: #00719c;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #005f91;
+  text-decoration: underline;
+}
+
+/* Button Styles */
+button.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #00719c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.btn:hover {
+  background-color: #005f91;
+  transform: scale(1.02);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 90%;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  input.form-control {
+    font-size: 14px;
+  }
+
+  button.btn {
+    font-size: 16px;
+  }
+}
