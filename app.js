@@ -29,8 +29,7 @@ const itemRouter = require("./routes/item");
 const userRouter = require("./routes/user");
 
 const Group = require("./models/group.js");
-const MONGO_URL = "mongodb://127.0.0.1:27017/vikas";
-
+const MONGO_URL = process.env.ATLASDB_URL;
 main()
   .then(() => {
     console.log("Connected to DB");
